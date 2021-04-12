@@ -39,6 +39,6 @@ while testTime != 101:#<- set the time
         number = number[2]
 
     
-    time.sleep(1)
+    time.sleep(3)
 
 

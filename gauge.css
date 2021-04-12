@@ -3,6 +3,7 @@
   max-width: 300px;
   font-family: "Roboto", sans-serif;
   font-size: 40px;
+  margin: auto;
   color: #004033;
 }
 
@@ -34,11 +35,12 @@
   position: absolute;
 
 
-  width: 300px;
+  width: 2500px;
   height: 150px;
 
   top: 100%;
-  right: 250px;
+  right: 300px; 
+  
 
   /*border-bottom-left-radius: 100% 200%;
   border-bottom-right-radius: 100% 200%;*/
@@ -57,7 +59,28 @@
   border-radius: 50%;
   position: absolute;
   top: 75px;
-  right: 250px;
+  right: 300px;
+  
+  transform: translateX(-50%);
+  
+
+  /* Text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 0%;
+  box-sizing: border-box;
+  
+}
+
+
+.gauge__previous {
+  width: 350px;
+  height: 75px;
+  background: #ffffff;
+  position: relative;
+  left: 150px;
+  margin:auto;
   transform: translateX(-50%);
   
 

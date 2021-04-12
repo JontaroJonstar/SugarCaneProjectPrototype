@@ -81,7 +81,10 @@
             <div class="gauge__body">
               <div class="gauge__fill"></div>
               <div class="gauge__cover"></div>
+              
+              
            </div>
+           <div class="gauge__previous"></div>
         </div>
        
 
@@ -90,14 +93,24 @@
             
 
             const gaugeElement = document.querySelector(".gauge");
+
+
+            function previousGaugeValue(gauge, value){
+                if (value < 0 || value > 15){
+                    return;
+                
+                }
+                gauge.querySelector(".gauge__previous").textContent = `Previous Value: ${(value)}`;
+            }
             
             function setGaugeValue(gauge, value){
                 if (value < 0 || value > 15){
                     return;
                 }
+                
+                
+                
                 gauge.querySelector(".gauge__fill").style.left= `${value* 20}px`;
-                
-                
                /* gauge.querySelector(".gauge__cover").textContent = `${Math.round(value * 100)}%`;*/
                 gauge.querySelector(".gauge__cover").textContent = `${(value)}`;
                 gauge.querySelector(".gauge__cover").style.left= `${value* 20}px`;
@@ -177,8 +190,11 @@
                 });
                // console.log("this is number", a); // the var a must within the getDATA FUCNITON 
                 var lastItem = a[a.length -2]; //choose the last number to display
+                var previousItem = a[a.length -3];
                 console.log("this is last item", lastItem);
+                console.log("this is previous item", previousItem);
                 setGaugeValue(gaugeElement, lastItem);
+                previousGaugeValue(gaugeElement, previousItem);
                 playAudio(lastItem); // run setGauge when eachtime get the data.
             //    setTimeout (setGaugeValue(gaugeElement, lastItem), 3000);
                 /// console.log(rows);
@@ -191,6 +207,7 @@
         </script>
 
         <h2>Set Number: ()</h2>
+        
         
 
           
