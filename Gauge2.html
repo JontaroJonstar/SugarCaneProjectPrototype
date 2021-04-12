@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS-only Responsive Gauges</title>
+        <meta charset="utf-8">
+        <link rel="shortcut icon" href="/assets/favicon.ico">
+        <link rel="stylesheet" href="gauge.css">
+        <link rel="stylesheet" href="style.css">
+        
+
+    </head>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Map.html">Map</a></li>
+            <li><a href="Gauge.html">Gauge</a></li>
+            <li><a href="Gauge2.html">Gauge2</a></li>
+            <li><a href="test_1.html">test_1</a></li>
+            <li><a href="test_2.html">test_2</a></li>
+        </ul>
+ 
+
+    <body>
+        <audio id="myAudio0">
+            <source src="0.wav" type="audio/ogg" loop="false">
+            <source src="0.wav" type="audio/mpeg"loop="false">
+            Your browser does not support the audio element.
+          </audio>
+          <audio id="myAudio1">
+            <source src="1.wav" type="audio/ogg" loop="false">
+            <source src="1.wav" type="audio/mpeg" loop="false">
+            Your browser does not support the audio element.
+          </audio>
+          <audio id="myAudio2">
+            <source src="2.wav" type="audio/ogg" loop="false">
+            <source src="2.wav" type="audio/mpeg" loop="false">
+            Your browser does not support the audio element.
+          </audio>
+          <audio id="myAudio3">
+            <source src="3.wav" type="audio/ogg" loop="false">
+            <source src="3.wav" type="audio/mpeg" loop="false">
+            Your browser does not support the audio element.
+          </audio>
+          <audio id="myAudio4">
+            <source src="4.wav" type="audio/ogg" loop="false">
+            <source src="4.wav" type="audio/mpeg" loop="false">
+            Your browser does not support the audio element.
+          </audio>
+          <audio id="myAudio5">
+            <source src="5.wav" type="audio/ogg" loop="false">
+            <source src="5.wav" type="audio/mpeg" loop="false">
+            Your browser does not support the audio element.
+          </audio>
+          <audio id="myAudio6">
+            <source src="6.wav" type="audio/ogg" loop="false">
+            <source src="6.wav" type="audio/mpeg" loop="false">
+            Your browser does not support the audio element.
+          </audio>
+          <audio id="myAudio7">
+            <source src="7.wav" type="audio/ogg" loop="false">
+            <source src="7.wav" type="audio/mpeg" loop="false">
+            Your browser does not support the audio element.
+          </audio>
+          <audio id="myAudio8">
+            <source src="8.wav" type="audio/ogg" loop="false">
+            <source src="8.wav" type="audio/mpeg" loop="false">
+            Your browser does not support the audio element.
+            <audio id="myAudioA">
+                <source src="alert.mp3" type="audio/ogg" loop="false">
+                <source src="alert.mp3" type="audio/mpeg" loop="false">
+                Your browser does not support the audio element.
+              </audio>
+          </audio>
+          
+          
+        <h1>Gauge2</h1>
+
+        <div class="gauge">
+            <div class="gauge__body">
+              
+           </div>
+        </div>
+       
+
+
+        <script>
+            
+
+            const gaugeElement = document.querySelector(".gauge");
+            
+            function setGaugeValue(gauge, value){
+                if (value < 0 || value > 15){
+                    return;
+                }
+                
+                
+                if (value < 8){
+                    gauge.querySelector(".gauge__body").style.backgroundColor = "red";
+                    
+                }else if (value == 8){
+                    gauge.querySelector(".gauge__body").style.backgroundColor = "green";
+                    
+                    
+
+                }else{
+                    gauge.querySelector(".gauge__body").style.backgroundColor = "blue";
+
+                }
+                
+            }
+            document.getElementById("myAudio0").loop = false;
+            document.getElementById("myAudio1").loop = false;
+            document.getElementById("myAudio2").loop = false;
+            document.getElementById("myAudio3").loop = false;
+            document.getElementById("myAudio4").loop = false;
+            document.getElementById("myAudio5").loop = false;
+            document.getElementById("myAudio6").loop = false;
+            document.getElementById("myAudio7").loop = false;
+            document.getElementById("myAudio8").loop = false;
+            document.getElementById("myAudioA").loop = false;
+            
+
+            var j = document.getElementById("myAudio0");
+            var b = document.getElementById("myAudio1");
+            var c = document.getElementById("myAudio2");
+            var d = document.getElementById("myAudio3");
+            var e = document.getElementById("myAudio4");
+            var f = document.getElementById("myAudio5");
+            var g = document.getElementById("myAudio6");
+            var h = document.getElementById("myAudio7");
+            var i = document.getElementById("myAudio8");
+            var k = document.getElementById("myAudioA");
+
+
+            function playAudio(value) {
+                if (value == 0) {
+                    j.play(); 
+                }else if (value == 1){
+                    b.play();
+                }else if (value == 2){
+                    c.play();
+                }else if (value == 3){
+                    d.play();
+                }else if (value == 4){
+                    e.play();
+                }else if (value == 5){
+                    f.play();
+                }else if (value == 6){
+                    g.play();
+                }else if (value == 7){
+                    h.play();
+                }else if (value == 8){
+                    i.play();
+                }else{
+                    k.play();
+                }
+            
+            } 
+
+
+
+            var a = [];
+            setInterval(getData, 1000) // run get Data function every 1 second
+            //getData();
+
+            
+            async function getData(){
+                const response = await fetch('data.csv');
+                const data = await response.text();
+                //console.log(data);
+
+                const rows = data.split('\n').slice(1);
+                rows.forEach(elt => {
+                    const row = elt.split(',');
+                    const number = row[3];
+
+                    a.push(number);
+                //   console.log(a);   
+
+                ///   console.log(row);
+                    //console.log(number);
+                ///  setGaugeValue(gaugeElement, number);
+                });
+               // console.log("this is number", a); // the var a must within the getDATA FUCNITON 
+                var lastItem = a[a.length -2]; //choose the last number to display
+                console.log("this is last item", lastItem);
+                setGaugeValue(gaugeElement, lastItem);
+                playAudio(lastItem); // run setGauge when eachtime get the data.
+            //    setTimeout (setGaugeValue(gaugeElement, lastItem), 3000);
+                /// console.log(rows);
+            };
+
+            
+
+
+
+        </script>
+
+        <h2>Set Number: ()</h2>
+        
+
+          
+
+
+    </body>
+</html>

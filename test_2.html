@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+      <meta charset="UTF-8" />
+      <meta name ="viewport" content="width=device-width" />
+      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+      <title>My Project</title>
+      <link rel="stylesheet" href="style.css">
+  </head>
+
+
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Map.html">Map</a></li>
+      <li><a href="Gauge.html">Gauge</a></li>
+      <li><a href="Gauge2.html">Gauge2</a></li>
+      <li><a href="test_1.html">test_1</a></li>
+      <li><a href="test_2.html">test_2</a></li>
+    </ul>
+
+  <body>
+
+
+
+
+    <form id="form">
+      <input id="number" type="text" min="1" max="14">
+      <button id ="calcButton">Submit</button>
+  </form>
+  document.getElementById("calcButton").addEventListener("click",getNumber);
+
+    <script>
+      var a = [];
+
+      getData();
+
+      async function getData(){
+        const response = await fetch('data.csv');
+        const data = await response.text();
+        ///console.log(data);
+
+        const rows = data.split('\n').slice(1);
+        rows.forEach(elt => {
+          const row = elt.split(',');
+          const number = row[3];
+
+          a.push(number);
+          console.log(a);
+
+
+       ///   console.log(row);
+        ///  console.log(number);
+        });
+       /// console.log(rows);
+
+        console.log("this is number", a);
+        var lastItem = a[a.length -2];
+        console.log("this is last item", lastItem);
+
+      }
+    </script>
+  </body>
+</html>
